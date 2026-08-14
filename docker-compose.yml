@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  uniquely-website:
+    container_name: uniquely-website-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3005:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
