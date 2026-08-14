@@ -31,9 +31,28 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
+            set -e
+            mkdir -p ~/uniquely-website
             cd ~/uniquely-website
             echo "Building and launching Docker container on port 3005..."
-            docker compose down || true
-            docker compose up -d --build
+            
+            if command -v docker-compose &> /dev/null; then
+              echo "Using docker-compose V1..."
+              docker-compose down --remove-orphans || true
+              docker-compose up -d --build
+            elif docker compose version &> /dev/null; then
+              echo "Using docker compose V2..."
+              docker compose down --remove-orphans || true
+              docker compose up -d --build
+            else
+              echo "Using docker run fallback..."
+              docker stop uniquely-website-app || true
+              docker rm uniquely-website-app || true
+              docker build -t uniquely-website:latest .
+              docker run -d --name uniquely-website-app --restart unless-stopped -p 3005:3000 uniquely-website:latest
+            fi
+
             docker image prune -f
-            echo "Deployment successful! App is live on port 3005."
+            echo "=== CURRENT RUNNING DOCKER CONTAINERS ==="
+            docker ps
+            echo "Deployment successful! Container is running."
