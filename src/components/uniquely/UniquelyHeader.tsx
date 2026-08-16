@@ -29,8 +29,8 @@ export function UniquelyHeader() {
     <>
       {/* Mobile Top Navigation Dock */}
       <div className="md:hidden fixed top-0 inset-x-0 z-50 px-4 py-3 pointer-events-none flex justify-between items-center">
-        <div className="pointer-events-auto bg-white/70 backdrop-blur-xl border border-white/80 shadow-lg rounded-full px-4 py-2 flex items-center justify-between w-full">
-          <Link href="/" className="relative w-7 h-7 shrink-0">
+        <div className="pointer-events-auto bg-white/80 backdrop-blur-2xl border border-white/90 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-full px-4 py-2 flex items-center justify-between w-full">
+          <Link href="/" className="relative w-7 h-7 shrink-0 hover:scale-105 transition-transform">
             <Image
               src="/images/ut_logo.png"
               alt="Uniquely Logo Mark"
@@ -39,9 +39,11 @@ export function UniquelyHeader() {
             />
           </Link>
 
-          <span className="font-syne font-bold text-xs tracking-wider uppercase text-black/80">
-            Uniquely<span className="text-[10px] align-top">®</span>
-          </span>
+          {/* Live Studio Status Pill instead of duplicate title */}
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/5 border border-black/5 text-[10px] font-mono font-semibold tracking-wider text-black/70">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span>DIGITAL STUDIO</span>
+          </div>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
