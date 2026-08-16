@@ -12,7 +12,7 @@ export function UniquelyHeader() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 80);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -27,18 +27,13 @@ export function UniquelyHeader() {
 
   return (
     <>
-      {/* Sticky / Fixed Top Navigation Bar */}
-      <header
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-white/80 backdrop-blur-xl border-b border-black/5 shadow-sm py-3"
-            : "bg-transparent py-5"
-        }`}
-      >
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 flex items-center justify-between">
-          {/* Brand Logo Header */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative w-8 h-8 rounded-lg overflow-hidden shrink-0 group-hover:scale-105 transition-transform">
+      {/* ========================================================================= */}
+      {/* MOBILE HEADER (< md) */}
+      {/* ========================================================================= */}
+      <div className="md:hidden fixed top-0 inset-x-0 z-50 px-4 py-3 pointer-events-none flex justify-between items-center">
+        <div className="pointer-events-auto bg-white/80 backdrop-blur-xl border border-white/90 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-full px-4 py-2 flex items-center justify-between w-full">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="relative w-7 h-7 shrink-0">
               <Image
                 src="/images/ut_logo.png"
                 alt="Uniquely Logo Mark"
@@ -46,47 +41,20 @@ export function UniquelyHeader() {
                 className="object-contain"
               />
             </div>
-            <span className="font-syne font-extrabold text-lg sm:text-xl tracking-tight text-black">
-              Uniquely<span className="text-xs align-top font-normal font-sans">®</span>
+            <span className="font-syne font-bold text-xs tracking-wider uppercase text-black/90">
+              Uniquely<span className="text-[10px] align-top">®</span>
             </span>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-semibold font-syne text-black/80">
-            {navLinks.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="hover:text-black transition-colors relative py-1 group"
-              >
-                <span>{item.label}</span>
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300" />
-              </Link>
-            ))}
-          </nav>
-
-          {/* Right Action / Mobile Toggle */}
-          <div className="flex items-center gap-3">
-            {/* Desktop Contact CTA */}
-            <a
-              href="mailto:info@uniquelytechnologies.com"
-              className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full bg-black text-white text-xs font-bold uppercase tracking-wider hover:bg-emerald-600 transition-all duration-300 shadow-sm"
-            >
-              <span>CONTACT US</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </a>
-
-            {/* Mobile Menu Toggle Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden w-10 h-10 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center text-black transition-colors"
-              aria-label="Toggle navigation menu"
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="w-8 h-8 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center text-black transition-colors"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+          </button>
         </div>
-      </header>
+      </div>
 
       {/* Mobile Glass Slide-Over Menu Overlay */}
       <AnimatePresence>
@@ -133,18 +101,98 @@ export function UniquelyHeader() {
         )}
       </AnimatePresence>
 
-      {/* Hero Giant Display Title & Studio Bio Bar */}
-      <div className="w-full px-4 sm:px-8 pt-24 sm:pt-28 pb-6 max-w-[1440px] mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 border-b border-black/10 pb-8">
-          {/* Giant Logo Display Title */}
-          <div>
-            <span className="text-[11px] font-mono font-semibold tracking-widest uppercase text-emerald-600 block mb-2">
-              • DIGITAL INNOVATION STUDIO
-            </span>
-            <h1 className="font-syne font-extrabold text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight text-black leading-none break-words">
-              Uniquely<span className="text-xl sm:text-3xl md:text-5xl align-top font-normal font-sans">®</span>
-            </h1>
-          </div>
+      {/* ========================================================================= */}
+      {/* DESKTOP HEADER (>= md) - RESTORED TO ORIGINAL DESIGN */}
+      {/* ========================================================================= */}
+      <div className="hidden md:flex fixed top-0 inset-x-0 z-50 pointer-events-none py-5 px-4 justify-center">
+        <AnimatePresence mode="wait">
+          {!scrolled ? (
+            /* Full Width Top Header (Unscrolled State) */
+            <motion.header
+              key="full-header"
+              initial={{ y: -30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -30, opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="pointer-events-auto border-b border-black/10 px-4 sm:px-8 py-3 text-black max-w-[1440px] w-full flex items-center justify-between bg-transparent"
+            >
+              {/* Navigation Links */}
+              <nav className="flex items-center gap-10 text-sm font-medium text-black/80 font-syne">
+                {navLinks.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className="hover:text-black transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+
+              {/* Contact Action Button */}
+              <div>
+                <a
+                  href="mailto:info@uniquelytechnologies.com"
+                  className="px-6 py-2.5 rounded-full border border-black/20 text-xs font-semibold uppercase tracking-wider text-black hover:bg-black hover:text-white transition-all duration-300"
+                >
+                  CONTACT US
+                </a>
+              </div>
+            </motion.header>
+          ) : (
+            /* Animated Transparent Glass Floating Bubble Pill Dock (Scrolled State) */
+            <motion.nav
+              key="transparent-floating-bubble"
+              initial={{ y: -50, scale: 0.85, opacity: 0 }}
+              animate={{ y: 0, scale: 1, opacity: 1 }}
+              exit={{ y: -40, scale: 0.85, opacity: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 22,
+                mass: 0.8,
+              }}
+              className="pointer-events-auto bg-white/40 backdrop-blur-2xl border border-white/60 shadow-[0_16px_40px_rgba(0,0,0,0.12)] rounded-full pl-4 pr-8 py-2.5 flex items-center gap-6 sm:gap-8"
+            >
+              {/* Left Small UT Icon Mark */}
+              <Link href="/" className="relative w-7 h-7 shrink-0 hover:scale-110 transition-transform">
+                <Image
+                  src="/images/ut_logo.png"
+                  alt="Uniquely Logo Mark"
+                  fill
+                  className="object-contain"
+                />
+              </Link>
+
+              {/* Navigation Links */}
+              <div className="flex items-center gap-6 sm:gap-8">
+                {navLinks.map((item) => (
+                  <motion.div
+                    key={item.label}
+                    whileHover={{ scale: 1.1, y: -1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Link
+                      href={item.href}
+                      className="text-xs sm:text-sm font-semibold text-black/90 hover:text-black transition-colors duration-200 tracking-wide font-syne"
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Hero Giant Title & Studio Bio Bar */}
+      <div className="w-full px-4 sm:px-8 pt-20 md:pt-28 pb-6 max-w-[1440px] mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6">
+          {/* Giant Logo Title */}
+          <h1 className="font-syne font-bold text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight text-black leading-none break-words">
+            Uniquely<span className="text-xl sm:text-3xl md:text-5xl align-top font-normal font-sans">®</span>
+          </h1>
 
           {/* Studio Bio Box (Right side) */}
           <div className="max-w-xs space-y-2.5 pb-1">
