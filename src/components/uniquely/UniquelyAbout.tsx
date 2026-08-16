@@ -41,9 +41,9 @@ export function UniquelyAbout() {
       {/* 4 Metric Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Card 1: Global Collaborations */}
-        <div className="lumora-card-light rounded-3xl p-6 flex flex-col justify-between h-[280px]">
+        <div className="lumora-card-light rounded-3xl p-5 md:p-6 flex flex-col justify-between min-h-[200px] md:h-[280px]">
           <div>
-            <div className="flex -space-x-2 overflow-hidden mb-6">
+            <div className="flex -space-x-2 overflow-hidden mb-4 md:mb-6">
               {avatars.map((url, idx) => (
                 <div key={idx} className="inline-block h-8 w-8 rounded-full ring-2 ring-white overflow-hidden relative">
                   <Image src={url} alt="Collaborator" fill className="object-cover" />
@@ -55,38 +55,38 @@ export function UniquelyAbout() {
             </span>
           </div>
 
-          <div>
-            <h3 className="font-syne font-black text-5xl text-black">48+</h3>
+          <div className="pt-2 md:pt-0">
+            <h3 className="font-syne font-black text-4xl sm:text-5xl text-black">48+</h3>
           </div>
         </div>
 
         {/* Card 2: Industry Recognition (Dark Card) */}
-        <div className="lumora-card-dark rounded-3xl p-6 flex flex-col justify-between h-[280px]">
+        <div className="lumora-card-dark rounded-3xl p-5 md:p-6 flex flex-col justify-between min-h-[200px] md:h-[280px]">
           <div className="flex items-center justify-between">
             <div>
               <span className="text-[11px] font-mono uppercase text-white/50 block">Industry Recognition</span>
-              <h3 className="font-syne font-extrabold text-4xl text-white mt-1">12+</h3>
+              <h3 className="font-syne font-extrabold text-3xl sm:text-4xl text-white mt-1">12+</h3>
             </div>
 
             {/* Circular Gauge Graphic */}
-            <div className="relative w-16 h-16 rounded-full border border-white/20 flex items-center justify-center">
-              <div className="w-10 h-10 rounded-full border border-dashed border-white/40 animate-spin-slow" />
+            <div className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-full border border-white/20 flex items-center justify-center shrink-0">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-dashed border-white/40 animate-spin-slow" />
               <div className="absolute w-2 h-2 rounded-full bg-white" />
             </div>
           </div>
 
-          <p className="text-xs text-white/60 leading-relaxed border-t border-white/10 pt-4">
+          <p className="text-xs text-white/60 leading-relaxed border-t border-white/10 pt-3 md:pt-4 mt-3 md:mt-0">
             Featured on Awwwards & FWA for design system & visual direction.
           </p>
         </div>
 
         {/* Card 3: Projects Delivered (with animated colorful thumbnail art) */}
-        <div className="lumora-card-light rounded-3xl p-6 flex flex-col justify-between h-[280px] group">
+        <div className="lumora-card-light rounded-3xl p-5 md:p-6 flex flex-col justify-between min-h-[200px] md:h-[280px] group">
           <div>
-            <span className="text-xs font-mono uppercase text-black/50 font-medium block mb-3">
+            <span className="text-xs font-mono uppercase text-black/50 font-medium block mb-2.5 sm:mb-3">
               Projects Delivered
             </span>
-            <div className="h-20 w-full rounded-xl overflow-hidden relative border border-black/5">
+            <div className="h-16 sm:h-20 w-full rounded-xl overflow-hidden relative border border-black/5">
               <motion.div
                 className="w-full h-full relative"
                 whileHover={{ scale: 1.15, rotate: 1 }}
@@ -102,13 +102,13 @@ export function UniquelyAbout() {
             </div>
           </div>
 
-          <div>
-            <h3 className="font-syne font-black text-5xl text-black">150+</h3>
+          <div className="pt-2 md:pt-0">
+            <h3 className="font-syne font-black text-4xl sm:text-5xl text-black">150+</h3>
           </div>
         </div>
 
         {/* Card 4: Years of Experience (with vibrant background artwork & hover animation) */}
-        <div className="relative rounded-3xl p-6 flex flex-col justify-between h-[280px] overflow-hidden group">
+        <div className="relative rounded-3xl p-5 md:p-6 flex flex-col justify-between min-h-[200px] md:h-[280px] overflow-hidden group">
           <motion.div
             className="absolute inset-0 w-full h-full"
             whileHover={{ scale: 1.12, rotate: 0.5 }}
@@ -129,8 +129,8 @@ export function UniquelyAbout() {
             </span>
           </div>
 
-          <div className="relative z-10 text-white">
-            <h3 className="font-syne font-black text-5xl mb-1">4+ Yrs</h3>
+          <div className="relative z-10 text-white pt-6 md:pt-0">
+            <h3 className="font-syne font-black text-4xl sm:text-5xl mb-1">4+ Yrs</h3>
             <p className="text-xs text-white/80 line-clamp-2">
               Delivering visual, web, and spatial architecture.
             </p>

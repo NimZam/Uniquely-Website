@@ -45,12 +45,12 @@ export function UniquelyTestimonials() {
         {/* Testimonial Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {/* Card 1: Rating Gauge (Dark Card) */}
-          <div className="lumora-card-dark rounded-3xl p-6 flex flex-col justify-between h-[380px]">
+          <div className="lumora-card-dark rounded-3xl p-5 md:p-6 flex flex-col justify-between min-h-[240px] md:h-[380px]">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-syne font-black text-5xl text-white">4.9</h3>
-                <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-yellow-400">
-                  <Star className="w-6 h-6 fill-yellow-400" />
+                <h3 className="font-syne font-black text-4xl sm:text-5xl text-white">4.9</h3>
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 flex items-center justify-center text-yellow-400">
+                  <Star className="w-5 h-5 sm:w-6 sm:h-6 fill-yellow-400" />
                 </div>
               </div>
               <span className="text-xs font-mono uppercase text-white/60 block leading-relaxed">
@@ -58,7 +58,7 @@ export function UniquelyTestimonials() {
               </span>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-4 pt-4 md:pt-0">
               <div className="flex -space-x-2 overflow-hidden items-center">
                 <div className="inline-block h-8 w-8 rounded-full ring-2 ring-black overflow-hidden relative bg-neutral-800">
                   <Image src="/images/lasitha.png" alt="Lasitha Kulasekara" fill className="object-cover" />
@@ -84,16 +84,16 @@ export function UniquelyTestimonials() {
           </div>
 
           {/* Card 2: KAID Architecture - Lasitha Kulasekara */}
-          <div className="lumora-card-light rounded-3xl p-6 flex flex-col justify-between h-[380px]">
+          <div className="lumora-card-light rounded-3xl p-5 md:p-6 flex flex-col justify-between min-h-[220px] md:h-[380px]">
             <div>
-              <Quote className="w-6 h-6 text-black/30 mb-3" />
+              <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-black/30 mb-2.5 sm:mb-3" />
               <p className="text-xs sm:text-sm font-medium text-black leading-relaxed">
                 "Uniquely Technologies brought our vision to life with a clean, user-friendly, modern website for KAID. Professional, creative, and highly responsive throughout."
               </p>
             </div>
 
-            <div className="flex items-center gap-3 border-t border-black/10 pt-4">
-              <div className="w-11 h-11 rounded-full overflow-hidden relative border border-black/10 shrink-0 bg-neutral-100">
+            <div className="flex items-center gap-3 border-t border-black/10 pt-4 mt-4 md:mt-0">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden relative border border-black/10 shrink-0 bg-neutral-100">
                 <Image
                   src="/images/lasitha.png"
                   alt="Lasitha Kulasekara"
@@ -109,16 +109,16 @@ export function UniquelyTestimonials() {
           </div>
 
           {/* Card 3: ICMS Compliance */}
-          <div className="lumora-card-light rounded-3xl p-6 flex flex-col justify-between h-[380px]">
+          <div className="lumora-card-light rounded-3xl p-5 md:p-6 flex flex-col justify-between min-h-[220px] md:h-[380px]">
             <div>
-              <Quote className="w-6 h-6 text-black/30 mb-3" />
+              <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-black/30 mb-2.5 sm:mb-3" />
               <p className="text-xs sm:text-sm font-medium text-black leading-relaxed">
                 "Outstanding digital strategy and web architecture. Uniquely Technologies delivered our compliance platform with exceptional precision, quality, and speed."
               </p>
             </div>
 
-            <div className="flex items-center gap-3 border-t border-black/10 pt-4">
-              <div className="w-11 h-11 rounded-full overflow-hidden relative border border-black/10 shrink-0 bg-white p-1">
+            <div className="flex items-center gap-3 border-t border-black/10 pt-4 mt-4 md:mt-0">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden relative border border-black/10 shrink-0 bg-white p-1">
                 <Image
                   src="/images/icms_logo.png"
                   alt="ICMS Compliance"
@@ -134,16 +134,16 @@ export function UniquelyTestimonials() {
           </div>
 
           {/* Card 4: Theji Tours */}
-          <div className="lumora-card-light rounded-3xl p-6 flex flex-col justify-between h-[380px]">
+          <div className="lumora-card-light rounded-3xl p-5 md:p-6 flex flex-col justify-between min-h-[220px] md:h-[380px]">
             <div>
-              <Quote className="w-6 h-6 text-black/30 mb-3" />
+              <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-black/30 mb-2.5 sm:mb-3" />
               <p className="text-xs sm:text-sm font-medium text-black leading-relaxed">
                 "Transformed our travel booking platform into a seamless, high-converting digital experience. Their attention to detail and user experience is top-tier."
               </p>
             </div>
 
-            <div className="flex items-center gap-3 border-t border-black/10 pt-4">
-              <div className="w-11 h-11 rounded-full overflow-hidden relative border border-black/10 shrink-0 bg-white p-1">
+            <div className="flex items-center gap-3 border-t border-black/10 pt-4 mt-4 md:mt-0">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden relative border border-black/10 shrink-0 bg-white p-1">
                 <Image
                   src="/images/theji_tours_logo.png"
                   alt="Theji Tours (Pvt) Ltd"
