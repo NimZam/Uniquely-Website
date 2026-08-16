@@ -13,9 +13,9 @@ export function UniquelyHero() {
   ];
 
   return (
-    <section className="w-full px-4 sm:px-8 pb-16 max-w-[1440px] mx-auto">
+    <section className="w-full px-4 sm:px-8 pb-10 sm:pb-16 max-w-[1440px] mx-auto">
       {/* Hero Image Container Card */}
-      <div className="relative w-full h-[540px] sm:h-[640px] rounded-[32px] overflow-hidden border border-black/10 shadow-xl group">
+      <div className="relative w-full min-h-[460px] sm:min-h-[540px] md:h-[640px] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-black/10 shadow-xl group">
         {/* Main Background Image - Snow-capped Mountain Peak */}
         <Image
           src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000&auto=format&fit=crop"
@@ -26,10 +26,10 @@ export function UniquelyHero() {
         />
 
         {/* Subtle Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
 
         {/* Bottom Bar overlay inside Hero */}
-        <div className="absolute bottom-6 inset-x-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 z-10">
+        <div className="absolute bottom-4 sm:bottom-6 inset-x-4 sm:inset-x-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4 z-10">
           {/* Left Text */}
           <div className="max-w-xs">
             <span className="text-[10px] font-mono uppercase font-semibold text-white/70 block tracking-wider mb-0.5">
@@ -41,15 +41,15 @@ export function UniquelyHero() {
           </div>
 
           {/* Bottom Tag Pills Strip */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 max-w-full">
             {tags.map((tag) => {
               const Icon = tag.icon;
               return (
                 <div
                   key={tag.label}
-                  className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-medium hover:bg-white hover:text-black transition-all cursor-pointer shadow-sm"
+                  className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] sm:text-xs font-medium hover:bg-white hover:text-black transition-all cursor-pointer shadow-sm shrink-0"
                 >
-                  <Icon className="w-3.5 h-3.5" />
+                  <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                   <span>{tag.label}</span>
                 </div>
               );

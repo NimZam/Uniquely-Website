@@ -86,11 +86,11 @@ export function UniquelyServices() {
   ];
 
   return (
-    <section id="services" className="w-full px-4 sm:px-8 py-12 max-w-[1440px] mx-auto">
+    <section id="services" className="w-full px-4 sm:px-8 py-10 sm:py-12 max-w-[1440px] mx-auto">
       {/* Dark Section Container */}
-      <div className="bg-[#121316] text-white rounded-[36px] p-6 sm:p-12 border border-white/10 shadow-2xl">
+      <div className="bg-[#121316] text-white rounded-[28px] sm:rounded-[36px] p-5 sm:p-12 border border-white/10 shadow-2xl">
         {/* Header Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12 border-b border-white/10 pb-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 mb-8 sm:mb-12 border-b border-white/10 pb-6 sm:pb-8 items-start">
           <div className="md:col-span-3">
             <span className="text-xs font-mono font-semibold tracking-wider uppercase text-white/50">
               — OUR SERVICES
@@ -98,7 +98,7 @@ export function UniquelyServices() {
           </div>
 
           <div className="md:col-span-6">
-            <h2 className="font-syne text-3xl sm:text-5xl font-bold tracking-tight text-white mb-3 leading-tight">
+            <h2 className="font-syne text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-2 sm:mb-3 leading-tight">
               Comprehensive Digital Solutions For Growing Brands.
             </h2>
           </div>
@@ -112,7 +112,7 @@ export function UniquelyServices() {
               {["DEVELOPMENT", "BRANDING", "STRATEGY"].map((pill) => (
                 <span
                   key={pill}
-                  className="text-[10px] font-mono font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-white/10 text-white/80 border border-white/10"
+                  className="text-[10px] font-mono font-semibold uppercase tracking-wider px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-white/10 text-white/80 border border-white/10"
                 >
                   {pill}
                 </span>
@@ -126,29 +126,29 @@ export function UniquelyServices() {
           {services.map((service, index) => {
             const isOpen = openIndex === index;
             return (
-              <div key={service.id} className="py-8 transition-colors">
+              <div key={service.id} className="py-6 sm:py-8 transition-colors">
                 <div
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex items-center justify-between cursor-pointer group select-none"
+                  className="flex items-start sm:items-center justify-between cursor-pointer group select-none gap-3"
                 >
-                  <div className="flex items-baseline gap-6 sm:gap-12">
-                    <span className="text-xs font-mono text-white/40">{service.id}</span>
-                    <div>
-                      <h3 className="font-syne font-bold text-2xl sm:text-4xl text-white group-hover:text-white/80 transition-colors">
+                  <div className="flex items-start sm:items-baseline gap-3 sm:gap-12 min-w-0 pr-2">
+                    <span className="text-xs font-mono text-white/40 pt-1 sm:pt-0 shrink-0">{service.id}</span>
+                    <div className="min-w-0">
+                      <h3 className="font-syne font-bold text-lg sm:text-2xl md:text-4xl text-white group-hover:text-white/80 transition-colors leading-snug">
                         {service.title}
                       </h3>
-                      <span className="text-xs font-mono text-emerald-400/80 block mt-1">
+                      <span className="text-[11px] sm:text-xs font-mono text-emerald-400/80 block mt-1">
                         {service.subtitle}
                       </span>
                     </div>
                   </div>
 
                   <button
-                    className={`w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/80 transition-all shrink-0 ${
+                    className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-white/20 flex items-center justify-center text-white/80 transition-all shrink-0 mt-0.5 sm:mt-0 ${
                       isOpen ? "bg-white text-black border-white" : "group-hover:border-white/50"
                     }`}
                   >
-                    {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                    {isOpen ? <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
                   </button>
                 </div>
 

@@ -4,9 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 
 export function UniquelyHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,8 +27,79 @@ export function UniquelyHeader() {
 
   return (
     <>
-      {/* Animated Floating Transparent Header Dock Container */}
-      <div className="fixed top-0 inset-x-0 z-50 pointer-events-none py-5 px-4 flex justify-center">
+      {/* Mobile Top Navigation Dock */}
+      <div className="md:hidden fixed top-0 inset-x-0 z-50 px-4 py-3 pointer-events-none flex justify-between items-center">
+        <div className="pointer-events-auto bg-white/70 backdrop-blur-xl border border-white/80 shadow-lg rounded-full px-4 py-2 flex items-center justify-between w-full">
+          <Link href="/" className="relative w-7 h-7 shrink-0">
+            <Image
+              src="/images/ut_logo.png"
+              alt="Uniquely Logo Mark"
+              fill
+              className="object-contain"
+            />
+          </Link>
+
+          <span className="font-syne font-bold text-xs tracking-wider uppercase text-black/80">
+            Uniquely<span className="text-[10px] align-top">®</span>
+          </span>
+
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="w-8 h-8 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center text-black transition-colors"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Glass Slide-Over Menu Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-40 bg-white/95 backdrop-blur-2xl px-6 pt-24 pb-8 flex flex-col justify-between md:hidden"
+          >
+            <div className="space-y-6">
+              <span className="text-xs font-mono font-semibold tracking-wider uppercase text-black/40 block border-b border-black/10 pb-2">
+                — NAVIGATION
+              </span>
+              <nav className="flex flex-col gap-5">
+                {navLinks.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="font-syne font-bold text-3xl text-black hover:text-emerald-600 transition-colors flex items-center justify-between"
+                  >
+                    <span>{item.label}</span>
+                    <ArrowUpRight className="w-5 h-5 text-black/30" />
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            <div className="space-y-4 pt-6 border-t border-black/10">
+              <a
+                href="mailto:info@uniquelytechnologies.com"
+                className="w-full py-3.5 rounded-full bg-black text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg"
+              >
+                <span>CONTACT US</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+              <p className="text-[11px] font-mono text-center text-black/50">
+                © UNIQUELY TECHNOLOGIES (PVT) LTD
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Desktop Animated Floating Header Dock Container */}
+      <div className="hidden md:flex fixed top-0 inset-x-0 z-50 pointer-events-none py-5 px-4 justify-center">
         <AnimatePresence mode="wait">
           {!scrolled ? (
             /* Full Width Top Header (Unscrolled State) */
@@ -109,18 +182,18 @@ export function UniquelyHeader() {
       </div>
 
       {/* Hero Giant Title & Studio Bio Bar */}
-      <div className="w-full px-4 sm:px-8 pt-28 pb-6 max-w-[1440px] mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div className="w-full px-4 sm:px-8 pt-20 md:pt-28 pb-6 max-w-[1440px] mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6">
           {/* Giant Logo Title */}
-          <h1 className="font-syne font-bold text-6xl sm:text-8xl md:text-9xl tracking-tight text-black leading-none">
-            Uniquely<span className="text-2xl sm:text-4xl md:text-5xl align-top font-normal font-sans">®</span>
+          <h1 className="font-syne font-bold text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight text-black leading-none break-words">
+            Uniquely<span className="text-xl sm:text-3xl md:text-5xl align-top font-normal font-sans">®</span>
           </h1>
 
           {/* Studio Bio Box (Right side) */}
-          <div className="max-w-xs space-y-3 pb-2">
+          <div className="max-w-xs space-y-2.5 pb-1">
             <div className="flex items-center gap-2">
               <div className="flex -space-x-2 overflow-hidden">
-                <div className="inline-block h-7 w-7 rounded-full ring-2 ring-white overflow-hidden relative">
+                <div className="inline-block h-6 w-6 sm:h-7 sm:w-7 rounded-full ring-2 ring-white overflow-hidden relative">
                   <Image
                     src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"
                     alt="Team Member"
@@ -128,7 +201,7 @@ export function UniquelyHeader() {
                     className="object-cover"
                   />
                 </div>
-                <div className="inline-block h-7 w-7 rounded-full ring-2 ring-white overflow-hidden relative">
+                <div className="inline-block h-6 w-6 sm:h-7 sm:w-7 rounded-full ring-2 ring-white overflow-hidden relative">
                   <Image
                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop"
                     alt="Team Member"
@@ -137,7 +210,7 @@ export function UniquelyHeader() {
                   />
                 </div>
               </div>
-              <span className="text-[11px] font-mono tracking-wider uppercase text-black/60 font-semibold">
+              <span className="text-[10px] sm:text-[11px] font-mono tracking-wider uppercase text-black/60 font-semibold">
                 ABOUT THE STUDIO
               </span>
             </div>

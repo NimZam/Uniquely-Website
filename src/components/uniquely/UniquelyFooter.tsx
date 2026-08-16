@@ -42,17 +42,17 @@ export function UniquelyFooter() {
       {/* Dark Footer Container */}
       <div className="bg-[#121316] text-white rounded-[36px] p-6 sm:p-12 border border-white/10 shadow-2xl">
         {/* Giant Logo Title Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between border-b border-white/10 pb-8 mb-12 gap-4">
-          <h2 className="font-syne font-black text-6xl sm:text-8xl md:text-9xl tracking-tight text-white leading-none">
-            Uniquely<span className="text-2xl sm:text-4xl md:text-5xl align-top font-normal font-sans">®</span>
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between border-b border-white/10 pb-6 sm:pb-8 mb-8 sm:mb-12 gap-4">
+          <h2 className="font-syne font-black text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight text-white leading-none break-words">
+            Uniquely<span className="text-xl sm:text-3xl md:text-5xl align-top font-normal font-sans">®</span>
           </h2>
-          <span className="font-mono text-xs text-white/50 pb-2">
+          <span className="font-mono text-xs text-white/50 pb-1 sm:pb-2">
             © 20 — 26'
           </span>
         </div>
 
         {/* Middle Columns Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 mb-8 sm:mb-12">
           {/* Left Contact & Phone Section */}
           <div className="md:col-span-6 space-y-6">
             <p className="text-sm text-white/70 max-w-md leading-relaxed">
@@ -64,7 +64,7 @@ export function UniquelyFooter() {
               <span className="block font-mono text-xs text-white/40 uppercase tracking-wider mb-1">EMAIL US</span>
               <a
                 href="mailto:info@uniquelytechnologies.com"
-                className="font-syne font-bold text-xl sm:text-2xl text-white hover:text-emerald-400 transition-colors underline underline-offset-8 decoration-white/30"
+                className="font-syne font-bold text-lg sm:text-2xl text-white hover:text-emerald-400 transition-colors underline underline-offset-8 decoration-white/30 break-all"
               >
                 info@uniquelytechnologies.com
               </a>
